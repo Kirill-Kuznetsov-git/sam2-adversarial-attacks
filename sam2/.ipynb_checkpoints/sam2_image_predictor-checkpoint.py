@@ -103,9 +103,6 @@ class SAM2ImagePredictor:
         elif isinstance(image, Image):
             w, h = image.size
             self._orig_hw = [(h, w)]
-        elif isinstance(image, torch.Tensor):
-            input_image = image
-            self._orig_hw = [image.shape[1:]]
         else:
             raise NotImplementedError("Image format not supported")
 
@@ -224,11 +221,11 @@ class SAM2ImagePredictor:
                 return_logits=return_logits,
                 img_idx=img_idx,
             )
-            masks_np = masks.squeeze(0).float()
+            masks_np = masks.squeeze(0).float().detach().cpu().numpy()
             iou_predictions_np = (
-                iou_predictions.squeeze(0).float()
+                iou_predictions.squeeze(0).float().detach().cpu().numpy()
             )
-            low_res_masks_np = low_res_masks.squeeze(0).float()
+            low_res_masks_np = low_res_masks.squeeze(0).float().detach().cpu().numpy()
             all_masks.append(masks_np)
             all_ious.append(iou_predictions_np)
             all_low_res_masks.append(low_res_masks_np)
@@ -298,9 +295,9 @@ class SAM2ImagePredictor:
             return_logits=return_logits,
         )
 
-        masks_np = masks.squeeze_(0).float()
-        iou_predictions_np = iou_predictions.squeeze(0).float()
-        low_res_masks_np = low_res_masks.squeeze(0).float()
+        masks_np = masks.squeeze(0).float().detach().cpu().numpy()
+        iou_predictions_np = iou_predictions.squeeze(0).float().detach().cpu().numpy()
+        low_res_masks_np = low_res_masks.squeeze(0).float().detach().cpu().numpy()
         return masks_np, iou_predictions_np, low_res_masks_np
 
     def _prep_prompts(
