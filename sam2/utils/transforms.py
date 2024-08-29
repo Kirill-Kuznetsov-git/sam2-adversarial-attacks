@@ -83,7 +83,6 @@ class SAM2Transforms(nn.Module):
         masks = masks.float()
         input_masks = masks
         mask_flat = masks.flatten(0, 1).unsqueeze(1)  # flatten as 1-channel image
-        
         try:
             if self.max_hole_area > 0:
                 # Holes are those connected components in background with area <= self.fill_hole_area

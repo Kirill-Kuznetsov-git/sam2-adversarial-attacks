@@ -143,7 +143,6 @@ class MaskDecoder(nn.Module):
         )
 
         # Select the correct mask or masks for output
-
         if multimask_output:
             masks = masks[:, 1:, :, :]
             iou_pred = iou_pred[:, 1:]
