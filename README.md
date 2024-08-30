@@ -1,4 +1,13 @@
-# SAM 2: Segment Anything in Images and Videos
+# Segment Anything 2 Adversarial Robustness
+### Project at Summer with AIRI 
+
+
+Leila Khaertdinova, Kirill Kuznetsov, Elizabeth Kashina 
+
+
+[[`Project report`](https://github.com/Kirill-Kuznetsov-git/sam2-adversarial-attacks/blob/main/project_report.pdf)] 
+
+## SAM 2: Segment Anything in Images and Videos
 
 **[AI at Meta, FAIR](https://ai.meta.com/research/)**
 
