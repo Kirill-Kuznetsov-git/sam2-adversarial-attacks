@@ -105,7 +105,6 @@ def save_masks_to_dir(
             save_ann_png(output_mask_path, output_mask, output_palette)
 
 
-@torch.inference_mode()
 @torch.autocast(device_type="cuda", dtype=torch.bfloat16)
 def vos_inference(
     predictor,
